@@ -5,7 +5,7 @@ setup(
   name="rusty_graph",
   version="1.0",
   # rust_extensions=[RustExtension("src/lib.rs", binding=Binding.PyO3)], 
-  rust_extensions=[RustExtension("rusty_graph.rusty_graph", "Cargo.toml")],
+  rust_extensions=[RustExtension("rusty_graph.rg", "Cargo.toml", binding=Binding.PyO3)],
   package_dir = {'': 'src'},
   packages=['rusty_graph'],#find_packages,
   # install_requires=["cffi"],
