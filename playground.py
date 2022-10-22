@@ -1,4 +1,4 @@
 import rusty_graph
+from rusty_graph import rg # correct 
 
-
-rusty_graph.hello_rust
+rg.sum_as_string(10,15)

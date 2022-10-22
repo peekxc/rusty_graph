@@ -1,14 +1,21 @@
+# See: https://github.com/PyO3/pyo3
 [package]
-name = "rusty_graph"
+name = "rusty_graph_rg"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
+# The name of the native library. This is the name which will be used in Python to import the
+# library (i.e. `import string_sum`). If you change this, you must also change the name of the
+# `#[pymodule]` in `src/lib.rs`.
 name = "rg"             ## name of the python module; name of the target, which corresponds to the filename of the artifact that will be generated.
-path = "src/rusty_graph/rg.rs"     ## The path field specifies where the source for the crate is located, relative to the Cargo.toml file.
-crate-type = ["cdylib"]   # https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-crate-type-field
+path = "src/rusty_graph/lib.rs"     ## The path field specifies where the source for the crate is located, relative to the Cargo.toml file.
+crate-type = ["cdylib" ,"rlib"]   # https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-crate-type-field
 required-features = [] # Features required to build this target (N/A for lib).
+
+# Downstream Rust code will not be able to `use rg;` unless the "rlib" or "lib" crate type is also included, e.g.:
+# crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 pyo3 = { version = "0.17.1", features = ["extension-module"] }
