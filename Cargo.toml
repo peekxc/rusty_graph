@@ -5,8 +5,13 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 [lib]
-name = "rusty_graph"
-crate-type = ["cdylib"]
+name = "rg"             ## name of the python module; name of the target, which corresponds to the filename of the artifact that will be generated.
+path = "src/lib.rs"     ## The path field specifies where the source for the crate is located, relative to the Cargo.toml file.
+crate-type = ["dylib"]   # https://doc.rust-lang.org/cargo/reference/cargo-targets.html#the-crate-type-field
+required-features = [] # Features required to build this target (N/A for lib).
 
 [dependencies]
 pyo3 = { version = "0.17.1", features = ["extension-module"] }
+
+[package.metadata.maturin]
+python-source = "src/rusty_graph"
