@@ -9,7 +9,5 @@ setup(
   rust_extensions=[RustExtension("rusty_graph.rg", "Cargo.toml", binding=Binding.PyO3)],
   package_dir = {'': 'src'},
   packages=['rusty_graph'],#find_packages,
-  # install_requires=["cffi"],
-  # setup_requires=["cffi"],
   zip_safe=False  # rust extensions are not zip safe, just like C-extensions.
 )

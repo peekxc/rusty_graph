@@ -19,6 +19,7 @@ required-features = [] # Features required to build this target (N/A for lib).
 
 [dependencies]
 pyo3 = { version = "0.17.1", features = ["extension-module"] }
+force_graph = { version = "0.3.2" }
 
 [package.metadata.maturin]
 python-source = "src/rusty_graph"
