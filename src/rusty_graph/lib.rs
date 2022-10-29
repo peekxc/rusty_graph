@@ -1,25 +1,24 @@
+use std::vec::Vec;
 use pyo3::prelude::*;
 use force_graph::{ForceGraph, Node, NodeData};
 
 
+// https://doc.rust-lang.org/std/vec/struct.Vec.html 
 #[pyfunction]
-fn create_force_graph(a: usize, b: usize) -> PyResult<String> {
+fn create_force_graph(a: usize, b: usize) -> Vec< f32 > {
     // create a force graph with default parameters
     let mut graph = <ForceGraph>::new(Default::default());
-    let XC: [f32; 5] = [250.0, 750.0, 250.0, 750.0, 500.0];
-    let YC: [f32; 5] = [250.0, 250.0, 750.0, 750.0, 500.0];
+    let XC = vec![250.0, 750.0, 250.0, 750.0, 500.0];
+    let YC = vec![250.0, 250.0, 750.0, 750.0, 500.0];
 
-    // let NI: [NodeIndex; 5];
+    // https://docs.rs/force_graph/latest/force_graph/struct.NodeData.html
+    let mut NI = Vec::new();
     for i in 1..5 {
         let n_idx = graph.add_node(NodeData { x: XC[i], y: YC[i], ..Default::default() });
-        // NI[i] = n_idx
+        NI.push(n_idx);
     }
-    // set up links between nodes
-    // graph.add_edge(n1_idx, n5_idx, Default::default());
-    // graph.add_edge(n2_idx, n5_idx, Default::default());
-    // graph.add_edge(n3_idx, n5_idx, Default::default());
-    // graph.add_edge(n4_idx, n5_idx, Default::default());
-    Ok((3).to_string())
+    graph.add_edge(NI[0], NI[2], Default::default());
+    XC
 }
 
 /// Formats the sum of two numbers as string.
