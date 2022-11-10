@@ -1,0 +1,18 @@
+[package]
+name = "data-grpc"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+tonic = "0.8"
+prost = "0.11"
+tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
+
+[[bin]] # Bin to run the Data gRPC client
+name = "dataclient"
+path = "src/dataclient.rs"
+
+[build-dependencies]
+tonic-build = "0.8"
