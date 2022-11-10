@@ -1,6 +1,5 @@
 import asyncio
 import logging
-from telnetlib import STATUS
 import grpc
 import data_pb2
 import data_pb2_grpc
