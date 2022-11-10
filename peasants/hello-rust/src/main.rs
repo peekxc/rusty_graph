@@ -36,6 +36,5 @@ fn build_graph() -> ([i32; 5], [(i32, i32); 5]) {
 
 fn update_positions(mut positions: [(f64, f64); 5], iterations: i32) -> [(f64, f64); 5] {
     positions[0].0 = 5.0;
-
     positions
 }
