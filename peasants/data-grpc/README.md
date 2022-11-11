@@ -28,3 +28,15 @@ From the root of data-grpc:
 ```
 cargo run --bin dataclient --release
 ```
+
+## Client-React
+Help us all. This was a doozy. From root of react-data-viewer:
+```
+npm install
+npm start
+```
+There is a known bug when running for the first time. For some reason you need to delete a statement in App.js, such as,
+```
+<div className="content">{'Data: ' + myresponse.getDataList()}</div>
+```
+click save, and then add the statement back, and finally hit save again to see the messages.
