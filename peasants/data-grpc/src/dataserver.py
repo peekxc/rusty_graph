@@ -15,20 +15,20 @@ class Data(data_pb2_grpc.DataServicer):
         stock.end_date = request.end_date
         stock.status = data_pb2.StockDataResponse.SUCCESS
         data = stock.data.add()
-        data.date = 'tbd'
+        data.date = 't1'
         data.value = 1.0
         data = stock.data.add()
-        data.date = 'tbd'
+        data.date = 't2'
         data.value = 2.0
         data = stock.data.add()
-        data.date = 'tbd'
+        data.date = 't3'
         data.value = 3.0
         return stock
 
 async def server() -> None:
     data_server = grpc.aio.server()
     data_pb2_grpc.add_DataServicer_to_server(Data(), data_server)
-    listen_addr = '[::]:50051'
+    listen_addr = '[::]:50051' #50051
     data_server.add_insecure_port(listen_addr)
     logging.info("Starting server on %s", listen_addr)
     await data_server.start()
