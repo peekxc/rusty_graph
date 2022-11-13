@@ -17,14 +17,14 @@ fn create_force_graph(a: usize, b: usize) -> PyArrayDyn< f64 > { //Vec< f64 > {
 
     // https://docs.rs/force_graph/latest/force_graph/struct.NodeData.html
     let mut NI = Vec::new();
-    for i in 1..5 {
-        let n_idx = graph.add_node(NodeData { x: xc[i] as f32, y: yc[i] as f32, ..Default::default() });
+    for i: usize in 1..5 {
+        let n_idx: NodeIndex = graph.add_node(NodeData { x: xc[i] as f32, y: yc[i] as f32, ..Default::default() });
         NI.push(n_idx);
     }
     graph.add_edge(NI[0], NI[2], Default::default());
     // XC
     let array = ndarray::Array::eye(a);
-    array.into_pyarray()
+    // array.into_pyarray()
 }
 
 /// Formats the sum of two numbers as string.
