@@ -1,0 +1,30 @@
+syntax = "proto3";
+package data;
+
+service Data{
+    rpc getStockData (StockDataRequest) returns (StockDataResponse);
+}
+
+message StockDataRequest {
+    string ticker = 1;
+    string start_date = 2;
+    string end_date = 3;
+}
+
+message StockDataResponse {
+    string ticker = 1;
+    string start_date = 2;
+    string end_date = 3;
+    enum Status {
+        INVALID_TICKER = 0;
+        INVALID_START_DATE = 1;
+        INVALID_END_DATE = 2;
+        SUCCESS = 3;
+    }
+    Status status = 4; 
+    message Data {
+        string date = 1;
+        double value = 2;
+    }
+    repeated Data data = 5;
+}
